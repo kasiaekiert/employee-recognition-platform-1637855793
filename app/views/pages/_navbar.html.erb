@@ -11,5 +11,16 @@
         </li>
       </ul>
     </div>
+    <div class="right-part-navbar">
+      <ul class="navbar-nav ml-auto">
+        <% if employee_signed_in? %>
+          <span class="navbar-text"> <%= current_employee.email %> </span>
+          <%= link_to "Log out", destroy_employee_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary btn-inverse'%>
+        <% else %>
+          <%= link_to "Sign in", new_employee_registration_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%> 
+          <%= link_to "Log in", employee_session_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </nav>
