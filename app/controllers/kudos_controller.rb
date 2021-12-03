@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KudosController < ApplicationController
   before_action :authenticate_employee!
 
@@ -20,7 +22,7 @@ class KudosController < ApplicationController
   end
 
   private
-  
+
   def kudo_params
     params.require(:kudo).permit(:name, :content, :user_id, :title, :employee_id)
   end
