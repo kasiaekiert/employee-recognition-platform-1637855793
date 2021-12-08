@@ -1,0 +1,14 @@
+<h1>Kudos</h1>
+
+<ul>
+  <% kudos.each do |kudo| %>
+    <li>
+      <%= kudo.title %>
+      <%= kudo.content %>
+      <%= kudo.employee_id %>
+      <%= kudo.created_at %>
+    </li>
+  <% end %>
+
+  <%= link_to "Create New Kudo", new_kudo_path %>
+</ul>
