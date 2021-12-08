@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :employees
 
   resources :users, only: [:index]
-  resources :kudos, only: %i[index new create]
+  resources :kudos, only: %i[index new create update edit]
 
   root to: 'pages#home'
 

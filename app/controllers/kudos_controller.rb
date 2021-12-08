@@ -21,7 +21,19 @@ class KudosController < ApplicationController
     end
   end
 
-  def edit; end
+  def update
+    kudo = Kudo.find(params[:id])
+    if kudo.update(kudo_params)
+      redirect_to kudos_path(kudo), notice: 'Kudo was successfully updated.'
+    else
+      render :edit, locals: { kudo: kudo, presenter: KudoPresenter.new }
+    end
+  end
+
+  def edit
+    kudo = Kudo.find(params[:id])
+    render :edit, locals: { kudo: kudo, presenter: KudoPresenter.new }
+  end
 
   def show; end
 
