@@ -4,22 +4,25 @@ class KudosController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    @kudos = Kudo.all
+    render :index, locals: { kudos: Kudo.all }
   end
 
   def new
-    @kudo = Kudo.new
+    render :new, locals: { kudo: Kudo.new, presenter: KudoPresenter.new }
   end
 
   def create
-    @kudo = Kudo.new(kudo_params)
+    kudo = Kudo.new(kudo_params)
 
-    if @kudo.save
+    if kudo.save
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
       render :new
     end
   end
+
+  def edit; end
+  def show; end
 
   private
 
