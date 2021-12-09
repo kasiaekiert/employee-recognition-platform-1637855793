@@ -37,6 +37,11 @@ class KudosController < ApplicationController
 
   def show; end
 
+  def destroy
+    kudo = Kudo.find(params[:id])
+    redirect_to kudos_path, notice: 'Kudo was successfully destroyed.'
+  end
+
   private
 
   def kudo_params
