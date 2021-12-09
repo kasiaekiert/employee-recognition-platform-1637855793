@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class KudosController < ApplicationController
+  before_action :set_kudo, only: %i[edit destroy update show]
   before_action :authenticate_employee!
 
   def index
@@ -22,7 +23,6 @@ class KudosController < ApplicationController
   end
 
   def update
-    kudo = Kudo.find(params[:id])
     if kudo.update(kudo_params)
       redirect_to kudos_path(kudo), notice: 'Kudo was successfully updated.'
     else
@@ -31,14 +31,12 @@ class KudosController < ApplicationController
   end
 
   def edit
-    kudo = Kudo.find(params[:id])
     render :edit, locals: { kudo: kudo, presenter: KudoPresenter.new }
   end
 
   def show; end
 
   def destroy
-    kudo = Kudo.find(params[:id])
     redirect_to kudos_path, notice: 'Kudo was successfully destroyed.'
   end
 
@@ -46,5 +44,9 @@ class KudosController < ApplicationController
 
   def kudo_params
     params.require(:kudo).permit(:name, :content, :user_id, :title, :employee_id)
+  end
+
+  def set_kudo
+    kudo = Kudo.find(params[:id])
   end
 end
