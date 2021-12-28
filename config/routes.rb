@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :employees
+  devise_for :admins, path: 'admins'
+  devise_for :employees, path: 'employees'
 
-  resources :users, only: [:index]
   resources :kudos
 
-  root to: 'pages#home'
+  authenticated :admin do
+    root to: 'admins/pages#home', as: :admin_root
+  end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'pages#home'
 end
