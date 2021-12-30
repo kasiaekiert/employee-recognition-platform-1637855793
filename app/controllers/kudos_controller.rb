@@ -4,7 +4,7 @@ class KudosController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    render :index, locals: { kudos: Kudo.all }
+    render :index, locals: { kudos: Kudo.includes(:giver, :receiver).all }
   end
 
   def new
@@ -45,7 +45,7 @@ class KudosController < ApplicationController
   private
 
   def kudo_params
-    params.require(:kudo).permit(:name, :content, :user_id, :title, :employee_id)
+    params.require(:kudo).permit(:content, :title, :receiver_id, :giver_id)
   end
 
   def kudo

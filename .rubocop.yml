@@ -29,8 +29,8 @@ Style/Documentation:
 
 RSpec/ExampleLength:
   Exclude: 
-    - spec/system/*
+    - spec/system/**/*
 
 RSpec/MultipleExpectations:
   Exclude: 
-    - spec/system/*
+    - spec/system/**/*

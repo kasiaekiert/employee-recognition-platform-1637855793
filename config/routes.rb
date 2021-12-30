@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   resources :kudos
 
-  authenticated :admin do
-    root to: 'admins/pages#home', as: :admin_root
+  namespace :admins do
+    resources :kudos
+    root to: 'pages#home'
   end
 
   root to: 'pages#home'
