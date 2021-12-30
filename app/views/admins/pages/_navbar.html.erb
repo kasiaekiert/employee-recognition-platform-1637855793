@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <%= link_to "Home", admins_root_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/kudos">Kudos</a>
+          <%= link_to "Kudos", admins_kudos_path, class: 'nav-link' %>
         </li>
       </ul>
     </div>
@@ -22,7 +22,7 @@
           <%= link_to "Sign in", new_admin_registration_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%> 
           <%= link_to "Log in", admin_session_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%>
         <% end %>
-        <%= link_to "Admin Panel", admin_session_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%>      </ul>
+        <%= link_to "Admin Panel", admins_root_path, class: 'nav-link btn btn-outline-secondary btn-inverse'%>      </ul>
       </ul>
     </div>
   </div>

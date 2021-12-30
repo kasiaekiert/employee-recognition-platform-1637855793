@@ -1,12 +1,12 @@
-<h1>Kudos</h1>
+<h1>Admins Kudos</h1>
 
 <table class="table table-success table-striped">
   <thead>
     <tr>
       <th>Title</th>
       <th>Content</th>
-      <th>Giver</th>
-      <th>Receiver</th>
+      <th>Employee - Giver </th>
+      <th>Employee - Receiver </th>
       <th>Created at</th>
       <th colspan="3"></th>
     </tr>
@@ -15,16 +15,18 @@
   <tbody>
     <% kudos.each do |kudo| %>
       <tr>
-        <td class="table-primary"><%= kudo.title %></td>
+        <td class="table-primary"><%= link_to kudo.title , admins_kudo_path(kudo) %></td>
         <td class="table-primary"><%= kudo.content %></td>
         <td class="table-primary"><%= kudo.giver.email %></td>
         <td class="table-primary"><%= kudo.receiver.email %></td>
         <td class="table-primary"><%= kudo.created_at %></td>
-        <td class="table-primary"><%= link_to "Edit this Kudo", edit_kudo_path(kudo) %>
-        <%= link_to 'Destroy this kudo', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table-primary"><%= link_to "Edit this Kudo", edit_admins_kudo_path(kudo) %>
+        <%= link_to 'Destroy this kudo', admins_kudo_path(kudo), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "Create New Kudo", new_kudo_path %>
+
+<br>
+<%= link_to "New Admin kudo", new_admins_kudo_path %>
