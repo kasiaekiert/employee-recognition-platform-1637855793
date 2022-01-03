@@ -1,0 +1,10 @@
+<h1>Company Values</h1>
+
+<% company_values.each do |company_value| %>
+  <%= link_to company_value.title , admins_company_value_path(company_value) %>
+  <%= link_to "Edit this Company Value", edit_admins_company_value_path(company_value) %>
+  <%= link_to 'Destroy this Company Value', admins_company_value_path(company_value), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+<% end %>
+
+<%= link_to "New Company Value", new_admins_company_value_path %>

@@ -15,3 +15,6 @@ end
 Admin.where(email:"admin@example.com").first_or_create! do |admin|
   admin.password = 'password'
 end
+
+CompanyValue.where(title:"Patient").first_or_create!
+CompanyValue.where(title:"Helpful").first_or_create!
