@@ -19,12 +19,12 @@ module Admins
     end
 
     def create
-      record = CompanyValue.new(company_value_params)
+      new_company_value = CompanyValue.new(company_value_params)
 
-      if record.save
+      if new_company_value.save
         redirect_to admins_company_values_path, notice: 'New Company Value was successfully created.'
       else
-        render :new, locals: { company_value: record }
+        render :new, locals: { company_value: new_company_value }
       end
     end
 
