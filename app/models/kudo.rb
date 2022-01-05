@@ -3,4 +3,5 @@
 class Kudo < ApplicationRecord
   belongs_to :receiver, class_name: 'Employee'
   belongs_to :giver, class_name: 'Employee'
+  belongs_to :company_value, class_name: 'CompanyValue'
 end

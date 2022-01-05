@@ -31,6 +31,11 @@
     <%= form.collection_select :giver_id, presenter.employees_for_select, :id, :email %>
   </div>
 
+  <div class="field">
+    <%= form.label :company_value_id %>
+    <%= form.collection_select :company_value_id, presenter.company_values_for_select, :id, :title %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Kudos' do
   let(:admin) { create(:admin) }
+  let!(:company_value) { create(:company_value) }
 
   before do
     sign_in admin
@@ -29,6 +30,14 @@ RSpec.describe 'Kudos' do
     click_link 'Kudos'
     click_link 'Edit this Kudo'
     fill_in 'Title', with: 'Kudo title 123'
+    click_button 'Update Kudo'
+
+    expect(page).to have_content 'Kudo was successfully updated.'
+
+    visit('/admins')
+    click_link 'Kudos'
+    click_link 'Edit this Kudo'
+    select company_value.title, from: 'kudo_company_value_id'
     click_button 'Update Kudo'
 
     expect(page).to have_content 'Kudo was successfully updated.'
