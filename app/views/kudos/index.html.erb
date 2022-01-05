@@ -8,6 +8,7 @@
       <th>Giver</th>
       <th>Receiver</th>
       <th>Created at</th>
+      <th>Company Value</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td class="table-primary"><%= kudo.giver.email %></td>
         <td class="table-primary"><%= kudo.receiver.email %></td>
         <td class="table-primary"><%= kudo.created_at %></td>
+        <td class="table-primary"><%= kudo.company_value.title %></td>
         <td class="table-primary"><%= link_to "Edit this Kudo", edit_kudo_path(kudo) %>
         <%= link_to 'Destroy this kudo', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

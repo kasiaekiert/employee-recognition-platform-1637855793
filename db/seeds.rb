@@ -12,9 +12,19 @@
   end
 end
 
+receiver = Employee.find_by(email: 'employee1@example.com')
+giver = Employee.find_by(email: 'employee3@example.com')
+
 Admin.where(email:"admin@example.com").first_or_create! do |admin|
   admin.password = 'password'
 end
 
-CompanyValue.where(title:"Patient").first_or_create!
+company_value = CompanyValue.where(title:"Patient").first_or_create!
 CompanyValue.where(title:"Helpful").first_or_create!
+
+Kudo.where(title:"Kudo first").first_or_create! do |kudo|
+  kudo.content = 'Content for this employee is excellent'
+  kudo.giver_id = receiver.id
+  kudo.receiver_id = giver.id
+  kudo.company_value = company_value
+end
