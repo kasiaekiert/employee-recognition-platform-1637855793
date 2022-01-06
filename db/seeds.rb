@@ -28,3 +28,8 @@ Kudo.where(title:"Kudo first").first_or_create! do |kudo|
   kudo.receiver_id = giver.id
   kudo.company_value = company_value
 end
+
+Reward.where(title:"Reward first").first_or_create! do |reward|
+  reward.description = 'Description'
+  reward.price = 15000
+end

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :kudos
     resources :company_values
+    resources :rewards
     root to: 'pages#home'
   end
 
