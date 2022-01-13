@@ -1,0 +1,21 @@
+<h1>Rewards</h1>
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% rewards.each do |reward| %>
+      <tr>
+        <td class="table-primary"><%= link_to reward.title , reward_path(reward) %></td>
+        <td class="table-primary"><%= reward.description %></td>
+        <td class="table-primary"><%= reward.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
