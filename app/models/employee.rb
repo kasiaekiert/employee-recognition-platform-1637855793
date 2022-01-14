@@ -6,5 +6,6 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :kudos, dependent: :destroy
+  has_many :given_kudos, class_name: 'Kudo', foreign_key: :giver, dependent: :destroy
+  has_many :received_kudos, class_name: 'Kudo', foreign_key: :receiver, dependent: :destroy
 end

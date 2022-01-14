@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :kudos
     resources :company_values
     resources :rewards
+    resources :employees
+    # , only: [:index, :show, :edit, :update, :delete]
     root to: 'pages#home'
   end
 
