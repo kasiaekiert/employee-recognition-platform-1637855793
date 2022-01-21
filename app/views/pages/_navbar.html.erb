@@ -20,6 +20,7 @@
     <div class="right-part-navbar">
       <ul class="navbar-nav ml-auto">
         <% if employee_signed_in? %>
+          <span class="navbar-text">You have: <%= current_employee.earned_points %>kudos</span>
           <span class="navbar-text"> <%= current_employee.email %> </span>
           <%= link_to "Log out", destroy_employee_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary btn-inverse'%>
         <% else %>

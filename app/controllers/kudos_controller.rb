@@ -19,6 +19,8 @@ class KudosController < ApplicationController
     record = Kudo.new(kudo_params)
 
     if record.save
+      record.receiver.earned_points += 1
+      record.receiver.save!
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else
       render :new, locals: { kudo: record, presenter: KudoPresenter.new }
