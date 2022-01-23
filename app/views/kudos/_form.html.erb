@@ -1,4 +1,16 @@
 <%= form_with model: kudo do |form| %>
+<% if kudo.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(kudo.errors.count, "error") %> prohibited this kudo value from being saved:</h2>
+
+    <ul>
+      <% kudo.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -7,11 +19,6 @@
   <div class="field">
     <%= form.label :content %>
     <%= form.text_field :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :giver_id %>
-    <%= form.collection_select :giver_id, presenter.employees_for_select, :id, :email %>
   </div>
 
   <div class="field">
