@@ -1,11 +1,3 @@
-# zalogowac 1 uzytkownika sprawdzic ile ma points -0
-# wylogowac
-# zalogowac2 , dodac kudo gdzie receiver bedzie uzytkownik 1
-# wylogowac
-# zalogowac na 1 uzytk. sprawdzic czy points sa 1
-
-# You have: <%= current_employee.earned_points %>kudos
-
 # frozen_string_literal: true
 
 require 'rails_helper'

@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Rewards' do
   let(:employee) { create(:employee) }
   let!(:reward) { create(:reward) }
+  let!(:reward1) { Reward.create(title: 'new reward', description: 'description1', price: 3) }
 
   before do
     sign_in employee
@@ -21,5 +22,13 @@ RSpec.describe 'Rewards' do
     click_link reward.title
 
     expect(page).to have_content "Title: #{reward.title}"
+  end
+
+  it 'can not buy a reward they cannot afford' do
+    visit('/')
+    click_link 'Rewards'
+
+    expect(page).to have_content 'Rewards'
+    expect(page).to have_button('Order this reward', disabled: true)
   end
 end

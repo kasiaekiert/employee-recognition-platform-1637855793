@@ -10,8 +10,6 @@ class Kudo < ApplicationRecord
   private
 
   def giver_available_kudos
-    if giver.available_kudos <= 0
-      errors.add(:base, 'You cant give more kudos')
-    end
+    errors.add(:base, 'You cant give more kudos') if giver.available_kudos <= 0
   end
 end

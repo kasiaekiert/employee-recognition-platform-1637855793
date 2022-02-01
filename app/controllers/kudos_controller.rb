@@ -21,8 +21,6 @@ class KudosController < ApplicationController
     record.giver = current_employee
 
     if record.save
-      record.receiver.earned_points += 1
-      record.receiver.save!
       employee_kudos = current_employee.available_kudos
       current_employee.available_kudos = employee_kudos - 1
       current_employee.save!
@@ -57,11 +55,5 @@ class KudosController < ApplicationController
 
   def kudo
     @kudo ||= Kudo.find(params[:id])
-  end
-
-  def check_available_kudos
-    if current_employee.available_kudos <= 0
-      @kudos_warning = "You can't write more than 5 kudos"
-    end
   end
 end

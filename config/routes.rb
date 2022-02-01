@@ -6,13 +6,13 @@ Rails.application.routes.draw do
 
   resources :kudos
   resources :rewards, only: %i[index show]
+  resources :orders, only: %i[create]
 
   namespace :admins do
     resources :kudos
     resources :company_values
     resources :rewards
     resources :employees
-    # , only: [:index, :show, :edit, :update, :delete]
     root to: 'pages#home'
   end
 

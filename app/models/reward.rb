@@ -2,4 +2,8 @@
 
 class Reward < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 1 }
+
+  def reward_purchasable?(employee)
+    employee.received_kudos.count >= price
+  end
 end

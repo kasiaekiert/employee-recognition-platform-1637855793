@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_01_14_082448) do
-=======
-ActiveRecord::Schema.define(version: 2022_01_12_144400) do
->>>>>>> feature/admin_manage_employee
+ActiveRecord::Schema.define(version: 2022_01_31_155404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +42,6 @@ ActiveRecord::Schema.define(version: 2022_01_12_144400) do
     t.string "first_name"
     t.string "last_name"
     t.integer "available_kudos", default: 5
-    t.integer "earned_points", default: 0
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
@@ -64,6 +59,15 @@ ActiveRecord::Schema.define(version: 2022_01_12_144400) do
     t.index ["receiver_id"], name: "index_kudos_on_receiver_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.bigint "reward_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_orders_on_employee_id"
+    t.index ["reward_id"], name: "index_orders_on_reward_id"
+  end
+
   create_table "rewards", force: :cascade do |t|
     t.string "title", null: false
     t.text "description", null: false
@@ -75,4 +79,6 @@ ActiveRecord::Schema.define(version: 2022_01_12_144400) do
   add_foreign_key "kudos", "company_values"
   add_foreign_key "kudos", "employees", column: "giver_id"
   add_foreign_key "kudos", "employees", column: "receiver_id"
+  add_foreign_key "orders", "employees"
+  add_foreign_key "orders", "rewards"
 end
