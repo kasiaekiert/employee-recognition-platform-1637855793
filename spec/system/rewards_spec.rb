@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'Rewards' do
   let(:employee) { create(:employee) }
   let!(:reward) { create(:reward) }
-  let!(:reward1) { Reward.create(title: 'new reward', description: 'description1', price: 3) }
 
   before do
     sign_in employee
