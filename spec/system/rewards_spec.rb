@@ -22,4 +22,12 @@ RSpec.describe 'Rewards' do
 
     expect(page).to have_content "Title: #{reward.title}"
   end
+
+  it 'can not buy a reward they cannot afford' do
+    visit('/')
+    click_link 'Rewards'
+
+    expect(page).to have_content 'Rewards'
+    expect(page).to have_button('Order this reward', disabled: true)
+  end
 end
