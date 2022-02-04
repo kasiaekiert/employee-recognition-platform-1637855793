@@ -24,10 +24,6 @@ class OrdersController < ApplicationController
   def reward_availability
     reward = Reward.find(orders_params[:reward_id])
 
-    if current_employee.received_kudos.count <= reward.price
-      raise NotAllowedError
-    else
-      true
-    end
+    raise NotAllowedError if current_employee.received_kudos.count <= reward.price
   end
 end
