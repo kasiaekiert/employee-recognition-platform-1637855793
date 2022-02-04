@@ -2,7 +2,6 @@
 
 class KudosController < ApplicationController
   before_action :authenticate_employee!
-  # before_action :check_available_kudos
 
   def index
     render :index, locals: { kudos: Kudo.includes(:giver, :receiver, :company_value).all }
