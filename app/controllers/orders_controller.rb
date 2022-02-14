@@ -5,9 +5,13 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_employee!
 
+  def index
+    render :index, locals: { orders: Order.all }
+  end
+
   def create
     order = current_employee.orders.new(orders_params)
-
+    order.reward_snapshot = ActiveSupport::JSON.encode(order.reward)
     if reward_availability && order.save
       redirect_to rewards_path, notice: 'Your purchase was successful.'
     else
@@ -24,6 +28,6 @@ class OrdersController < ApplicationController
   def reward_availability
     reward = Reward.find(orders_params[:reward_id])
 
-    raise NotAllowedError if current_employee.received_kudos.count <= reward.price
+    current_employee.earned_points >= reward.price
   end
 end

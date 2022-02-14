@@ -1,0 +1,25 @@
+<h1>Bought Rewards</h1>
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th> </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td class="table-primary"><%= order.deserialized_reward['title'] %></td>
+        <td class="table-primary"><%= order.deserialized_reward['description'] %></td>
+        <td class="table-primary"><%= order.deserialized_reward['price'] %></td>
+        <td class="table-primary">
+          <%#= button_to "Order this reward", orders_path, params: { order: { reward_id: reward.id } }, method: :post, disabled: !reward.reward_purchasable?(current_employee) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

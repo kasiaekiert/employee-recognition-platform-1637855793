@@ -6,4 +6,8 @@ class Reward < ApplicationRecord
   def reward_purchasable?(employee)
     employee.received_kudos.count >= price
   end
+
+  def attributes
+    {'title' => nil, 'description' => nil, 'price' => nil}
+  end
 end
