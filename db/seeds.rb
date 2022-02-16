@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 1.upto(5) do |i|
   Employee.where(email: "employee#{i}@example.com").first_or_create! do |employee|
     employee.password = 'password'
@@ -25,8 +17,8 @@ CompanyValue.where(title:"Helpful").first_or_create!
 1.upto(10) do |k|
   Kudo.where(title:"Kudo first#{k}").first_or_create! do |kudo|
     kudo.content = 'Content for this employee is excellent'
-    kudo.giver_id = receiver.id
-    kudo.receiver_id = giver.id
+    kudo.giver = giver
+    kudo.receiver = receiver
     kudo.company_value = company_value
   end
 end
