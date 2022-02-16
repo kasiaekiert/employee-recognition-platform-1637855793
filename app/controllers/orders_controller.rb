@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  class NotAllowedError < StandardError; end
-
   before_action :authenticate_employee!
 
   def index
