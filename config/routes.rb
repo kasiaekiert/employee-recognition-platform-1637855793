@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :company_values
     resources :rewards
     resources :employees
+    resources :orders, only: %i[index]
     root to: 'pages#home'
   end
 
