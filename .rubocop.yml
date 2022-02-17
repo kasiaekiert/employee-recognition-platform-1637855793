@@ -34,3 +34,11 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Exclude: 
     - spec/system/**/*
+
+RSpec/LetSetup:
+  Exclude:
+    - spec/system/**
+
+RSpec/AnyInstance:
+  Exclude:
+    - spec/system/**
