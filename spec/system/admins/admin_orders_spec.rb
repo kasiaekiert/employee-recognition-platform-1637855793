@@ -13,7 +13,7 @@ RSpec.describe 'Orders' do
   end
 
   it 'admin can see the list of bought rewards' do
-    #employee buy reward
+    # employee buy reward
     visit('/')
     click_link 'Rewards'
     expect(page).to have_content 'January the best employee'
@@ -28,7 +28,7 @@ RSpec.describe 'Orders' do
 
     sign_out employee
     sign_in admin
-    #admin change the name of the reward
+    # admin change the name of the reward
     visit('/')
     click_link 'Admin Panel'
     click_link 'Rewards'
@@ -40,7 +40,7 @@ RSpec.describe 'Orders' do
     visit('/')
     click_link 'Admin Panel'
     click_link 'Orders'
-    #admin see old name of reward in orders
+    # admin see old name of reward in orders
     expect(page).to have_content 'Bought Rewards'
     expect(page).to have_content 'January the best employee'
   end
