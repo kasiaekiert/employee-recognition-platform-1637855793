@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Orders' do
-  let(:employee) { create(:employee) }
-  let(:admin) { create(:admin) }
+  let!(:employee) { create(:employee) }
+  let!(:admin) { create(:admin) }
   let!(:reward) { create(:reward) }
 
   before do
@@ -12,8 +12,8 @@ RSpec.describe 'Orders' do
     allow_any_instance_of(Employee).to receive(:earned_points).and_return(1500)
   end
 
-  it 'can see the list of bought rewards' do
-    # user buy reward
+  it 'admin can see the list of bought rewards' do
+    # employee buy reward
     visit('/')
     click_link 'Rewards'
     expect(page).to have_content 'January the best employee'
@@ -28,7 +28,7 @@ RSpec.describe 'Orders' do
 
     sign_out employee
     sign_in admin
-    # admin change the title of this reward
+    # admin change the name of the reward
     visit('/')
     click_link 'Admin Panel'
     click_link 'Rewards'
@@ -37,12 +37,11 @@ RSpec.describe 'Orders' do
     click_button 'Update Reward'
     expect(page).to have_content 'Reward was successfully updated.'
 
-    sign_out admin
-    sign_in employee
     visit('/')
-    click_link 'Bought rewards'
-    # admin see old name in bought rewards
-    expect(page).to have_content 'Bought rewards'
+    click_link 'Admin Panel'
+    click_link 'Orders'
+    # admin see old name of reward in orders
+    expect(page).to have_content 'Bought Rewards'
     expect(page).to have_content 'January the best employee'
   end
 end

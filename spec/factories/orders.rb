@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :order do
-    employee { nil }
-    reward { nil }
+    employee
+    reward
   end
 end

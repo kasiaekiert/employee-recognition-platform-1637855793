@@ -38,7 +38,9 @@ RSpec/MultipleExpectations:
 RSpec/LetSetup:
   Exclude:
     - spec/system/**
+    - spec/system/admins/**
 
 RSpec/AnyInstance:
   Exclude:
     - spec/system/**
+    - spec/system/admins/**

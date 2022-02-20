@@ -1,0 +1,25 @@
+<h1>Bought Rewards</h1>
+
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Created at</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% orders.each do |order| %>
+      <tr>
+        <td class="table-primary"><%= order.employee.email %></td>
+        <td class="table-primary"><%= order.deserialized_reward['title'] %></td>
+        <td class="table-primary"><%= order.deserialized_reward['description'] %></td>
+        <td class="table-primary"><%= order.deserialized_reward['price'] %></td>
+        <td class="table-primary"><%= order.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
