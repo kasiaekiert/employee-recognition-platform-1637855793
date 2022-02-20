@@ -8,6 +8,7 @@
       <th>Description</th>
       <th>Price</th>
       <th>Created at</th>
+      <th>Status</th>
     </tr>
   </thead>
 
@@ -19,6 +20,9 @@
         <td class="table-primary"><%= order.deserialized_reward['description'] %></td>
         <td class="table-primary"><%= order.deserialized_reward['price'] %></td>
         <td class="table-primary"><%= order.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td class="table-primary">
+          <%= button_to "Deliver", change_status_admins_orders_path(id: order.id), method: :patch, data: { confirm: "Are you sure?" }, disabled: order.status == 'delivered' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
