@@ -36,12 +36,17 @@ RSpec.describe 'Orders' do
     fill_in 'Title', with: 'Title changed'
     click_button 'Update Reward'
     expect(page).to have_content 'Reward was successfully updated.'
-
     visit('/')
     click_link 'Admin Panel'
     click_link 'Orders'
     # admin see old name of reward in orders
     expect(page).to have_content 'Bought Rewards'
     expect(page).to have_content 'January the best employee'
+    visit('/')
+    click_link 'Admin Panel'
+    click_link 'Orders'
+    click_button('Deliver', match: :first)
+    # admin may deliver the order
+    expect(page).to have_content 'Order delivered'
   end
 end
