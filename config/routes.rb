@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :rewards
     resources :employees
     resources :orders, only: %i[index]
-    resource :orders do 
+    resource :orders do
       patch 'change_status'
     end
     root to: 'pages#home'
