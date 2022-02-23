@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    render :index, locals: { orders: Order.all }
+    if params[:status].present?
+      render :index, locals: { orders: Order.filter_by_status(params[:status]) }
+    else
+      render :index, locals: { orders: Order.all }
+    end
   end
 
   def create
@@ -20,7 +24,7 @@ class OrdersController < ApplicationController
   private
 
   def orders_params
-    params.require(:order).permit(:employee_id, :reward_id)
+    params.require(:order).permit(:employee_id, :reward_id, :status)
   end
 
   def reward_availability

@@ -1,0 +1,12 @@
+.btns {
+  float: right;
+  margin: 0 0 10px 0;
+  :focus { 
+    border: none;
+  }
+}
+
+.btn-info {
+  background-color: #d1e7dd !important;
+  border-color: #d1e7dd !important;
+}
