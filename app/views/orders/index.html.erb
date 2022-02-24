@@ -2,6 +2,11 @@
 
 <table class="table table-success table-striped">
   <thead>
+    <div class="btn-group btns">
+      <%= link_to "Delivered", orders_path(status: "delivered"), class: 'btn btn-info' %>
+      <%= link_to "Not delivered", orders_path(status: "undelivered"), class: 'btn btn-info' %>
+      <%= link_to "All", orders_path, class: 'btn btn-info' %>
+    </div>
     <tr>
       <th>Title</th>
       <th>Description</th>

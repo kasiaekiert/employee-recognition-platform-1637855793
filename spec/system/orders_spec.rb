@@ -41,8 +41,32 @@ RSpec.describe 'Orders' do
     sign_in employee
     visit('/')
     click_link 'Bought rewards'
-    # admin see old name in bought rewards
+    # the title of order did not change
     expect(page).to have_content 'Bought rewards'
     expect(page).to have_content 'January the best employee'
+
+    sign_out employee
+    sign_in admin
+    # admin change the status
+    visit('/')
+    click_link 'Admin Panel'
+    click_link 'Orders'
+    click_button('Deliver', match: :first)
+    # admin may deliver the order
+    expect(page).to have_content 'Order delivered'
+
+    sign_out admin
+    sign_in employee
+    visit('/')
+    # filtering on click
+    click_link 'Bought rewards'
+    click_link 'Delivered'
+    expect(page).to have_content 'Bought rewards'
+    expect(page).to have_content 'January the best employee'
+    visit('/')
+    click_link 'Bought rewards'
+    click_link 'Not delivered'
+    expect(page).to have_content 'Bought rewards'
+    expect(page).not_to have_content 'January the best employee'
   end
 end
