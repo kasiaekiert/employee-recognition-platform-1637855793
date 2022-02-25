@@ -17,8 +17,8 @@ CompanyValue.where(title:"Helpful").first_or_create!
 1.upto(10) do |k|
   Kudo.where(title:"Kudo first#{k}").first_or_create! do |kudo|
     kudo.content = 'Content for this employee is excellent'
-    kudo.giver = Employee.find_by(email: 'employee3@example.com')
-    kudo.receiver = Employee.find_by(email: 'employee1@example.com')
+    kudo.giver = giver
+    kudo.receiver = receiver
     kudo.company_value = company_value
   end
 end
