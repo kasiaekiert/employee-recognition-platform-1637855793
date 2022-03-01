@@ -111,13 +111,5 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'apikey', # Thiis is the string literal 'apikey', NOT the ID of your API key
-    password: Rails.application.credentials.dig(:sendgrid, :api_key),
-    domain: 'protected-fortress-07924.herokuapp.com',
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.perform_deliveries = true
 end
