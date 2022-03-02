@@ -80,4 +80,14 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey', # Thiis is the string literal 'apikey', NOT the ID of your API key
+    password: Rails.application.credentials.sendgrid(:api_key),
+    domain: 'protected-fortress-07924.herokuapp.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  
 end
