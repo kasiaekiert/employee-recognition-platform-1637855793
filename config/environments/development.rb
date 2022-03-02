@@ -36,12 +36,11 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
   config.action_mailer.perform_caching = false
-
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.
@@ -76,18 +75,7 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.credentials.content_path = 'config/credentials/local.yml.enc'
 
   # Uncomment if you wish to allow Action Cable access from any origin.
-  # config.action_cable.disable_request_forgery_protection = true
-  ActionMailer::Base.smtp_settings = {
-    user_name: 'apikey', # Thiis is the string literal 'apikey', NOT the ID of your API key
-    password: Rails.application.credentials.sendgrid[:api_key],
-    domain: 'protected-fortress-07924.herokuapp.com',
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
-  
+  # config.action_cable.disable_request_forgery_protection = true  
 end
