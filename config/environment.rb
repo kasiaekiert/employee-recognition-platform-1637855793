@@ -10,7 +10,7 @@ ActionMailer::Base.smtp_settings = {
   password: Rails.application.credentials.dig(:sendgrid, :api_key),
   domain: 'protected-fortress-07924.herokuapp.com',
   address: 'smtp.sendgrid.net',
-  port: 587,
+  port: 25, 587,
   authentication: :plain,
   enable_starttls_auto: true
 }
