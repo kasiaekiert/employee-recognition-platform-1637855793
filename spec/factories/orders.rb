@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :order do
     employee
     reward
-    status
+    status { 'undelivered' }
   end
 end

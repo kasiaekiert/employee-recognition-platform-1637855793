@@ -36,6 +36,6 @@ module RubyEmployeeRecognition
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
+    config.action_mailer.preview_path = Rails.root.join('lib/mailer_previews')
   end
 end
