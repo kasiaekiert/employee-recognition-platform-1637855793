@@ -8,7 +8,9 @@ module Admins
 
     def change_status
       order = Order.find(params[:id])
+      order_email = order.employee.email
       order.update(status: 'delivered')
+      OrderMailer.with(order_email: order_email).order_delivered.deliver_now
       redirect_to admins_orders_path, notice: 'Order delivered'
     end
 
