@@ -22,7 +22,7 @@ module Admins
       new_company_value = CompanyValue.new(company_value_params)
 
       if new_company_value.save
-        redirect_to admins_company_values_path, notice: 'New Company Value was successfully created.'
+        redirect_to admins_company_values_path, info: 'New Company Value was successfully created.'
       else
         render :new, locals: { company_value: new_company_value }
       end
@@ -30,7 +30,7 @@ module Admins
 
     def update
       if company_value.update(company_value_params)
-        redirect_to admins_company_value_path(company_value), notice: 'Company Value was successfully updated.'
+        redirect_to admins_company_value_path(company_value), info: 'Company Value was successfully updated.'
       else
         render :edit, locals: { company_value: company_value }
       end
@@ -38,7 +38,7 @@ module Admins
 
     def destroy
       company_value.destroy
-      redirect_to admins_company_values_path, notice: 'Company Value was successfully destroyed.'
+      redirect_to admins_company_values_path, danger: 'Company Value was successfully destroyed.'
     end
 
     private
