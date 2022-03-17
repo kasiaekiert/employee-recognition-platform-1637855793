@@ -20,8 +20,8 @@ class KudosController < ApplicationController
     record.giver = current_employee
 
     if record.save
-      employee_kudos = current_employee.available_kudos
-      current_employee.available_kudos = employee_kudos - 1
+      employee_kudos = current_employee.number_of_available_kudos
+      current_employee.number_of_available_kudos = employee_kudos - 1
       current_employee.save!
       redirect_to kudos_path, notice: 'Kudo was successfully created.'
     else

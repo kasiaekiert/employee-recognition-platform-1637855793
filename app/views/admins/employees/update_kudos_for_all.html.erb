@@ -1,0 +1,5 @@
+<%= form_for :employee, url: update_kudos_for_all_admins_employees_path, method: :patch do |form| %>
+  <%= form.label :additional_kudos, "Additional kudos for all employees:" %>
+  <%= form.number_field :additional_kudos, in: 1.0..20.0, step: 1.0 %>
+  <%= form.submit "Submit" %>
+<% end %>
