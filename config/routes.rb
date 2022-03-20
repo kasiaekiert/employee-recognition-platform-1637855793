@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     resources :kudos
     resources :company_values
     resources :rewards
-    resources :employees
+    resources :employees do
+      get 'kudos_for_all', on: :collection
+      patch 'update_kudos_for_all', on: :collection
+    end
     resources :orders, only: %i[index]
     resource :orders do
       patch 'change_status'
