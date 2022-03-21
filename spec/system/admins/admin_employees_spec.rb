@@ -22,8 +22,11 @@ RSpec.describe 'Employees' do
     expect(employee3.number_of_available_kudos).to have_content '6'
 
     click_link 'Add kudos'
-    fill_in 'Additional kudos for all employees:', with: '5'
+    fill_in 'Additional kudos for all employees:', with: 2
     click_button 'Submit'
     expect(page).to have_content 'Employee was successfully updated.'
+    expect(employee1.reload.number_of_available_kudos).to have_content '4'
+    expect(employee2.reload.number_of_available_kudos).to have_content '6'
+    expect(employee3.reload.number_of_available_kudos).to have_content '8'
   end
 end

@@ -16,9 +16,9 @@
     <% orders.each do |order| %>
       <tr>
         <td class="table-primary"><%= order.employee.email %></td>
-        <td class="table-primary"><%= order.deserialized_reward['title'] %></td>
-        <td class="table-primary"><%= order.deserialized_reward['description'] %></td>
-        <td class="table-primary"><%= order.deserialized_reward['price'] %></td>
+        <td class="table-primary"><%= order.reward_snapshot.title %></td>
+        <td class="table-primary"><%= order.reward_snapshot.description %></td>
+        <td class="table-primary"><%= order.reward_snapshot.price %></td>
         <td class="table-primary"><%= order.created_at.strftime("%d-%m-%Y %H:%M") %></td>
         <td class="table-primary">
           <%= button_to "Deliver", change_status_admins_orders_path(id: order.id), method: :patch, data: { confirm: "Are you sure?" }, disabled: order.status == 'delivered' %>

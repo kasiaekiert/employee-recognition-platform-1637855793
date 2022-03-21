@@ -17,9 +17,9 @@
   <tbody>
     <% orders.each do |order| %>
       <tr>
-        <td class="table-primary"><%= order.deserialized_reward['title'] %></td>
-        <td class="table-primary"><%= order.deserialized_reward['description'] %></td>
-        <td class="table-primary"><%= order.deserialized_reward['price'] %></td>
+        <td class="table-primary"><%= order.reward_snapshot.title %></td>
+        <td class="table-primary"><%= order.reward_snapshot.description %></td>
+        <td class="table-primary"><%= order.reward_snapshot.price %></td>
       </tr>
     <% end %>
   </tbody>
