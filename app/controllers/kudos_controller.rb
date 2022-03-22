@@ -30,6 +30,8 @@ class KudosController < ApplicationController
   end
 
   def update
+    raise danger: 'You cannot edit/destroy this kudo after 5 minutes!' unless authorize kudo
+
     if kudo.update(kudo_params)
       redirect_to kudo_path(kudo), notice: 'Kudo was successfully updated.'
     else

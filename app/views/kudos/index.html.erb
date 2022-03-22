@@ -22,8 +22,12 @@
         <td class="table-primary"><%= kudo.receiver.email %></td>
         <td class="table-primary"><%= kudo.created_at %></td>
         <td class="table-primary"><%= kudo.company_value.title %></td>
-        <td class="table-primary"><%= link_to "Edit this Kudo", edit_kudo_path(kudo) %>
-        <%= link_to 'Destroy this kudo', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table-primary">
+          <% if policy(kudo).update? %>
+            <%= link_to "Edit this Kudo", edit_kudo_path(kudo) %>
+            <%= link_to 'Destroy this kudo', kudo, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
