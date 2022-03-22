@@ -32,15 +32,16 @@ module Admins
     end
 
     def update_kudos_for_all
-      if Employee.all.each do |e|
-           kudos = params[:employee][:additional_kudos].to_i
-           e.number_of_available_kudos += kudos
-           e.save!
-         end
+      Employee.transaction do
+        Employee.all.each do |e|
+          kudos = params[:employee][:additional_kudos].to_i
+          e.number_of_available_kudos += kudos
+          e.save!
+        end
         redirect_to admins_employees_path, info: 'Employee was successfully updated.'
-      else
-        render :kudos_for_all, danger: 'Try again sth went wrong'
       end
+    rescue StandardError
+      render :kudos_for_all, danger: 'Try again sth went wrong'
     end
 
     private

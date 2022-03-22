@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
 
   def create
     order = current_employee.orders.new(orders_params)
-    order.reward_snapshot = ActiveSupport::JSON.encode(order.reward)
+    order.reward_snapshot = order.reward
     if reward_availability && order.save
       redirect_to rewards_path, notice: 'Your purchase was successful.'
     else
