@@ -39,8 +39,13 @@ RSpec/LetSetup:
   Exclude:
     - spec/system/**
     - spec/system/admins/**
+    - spec/models/**
 
 RSpec/AnyInstance:
   Exclude:
     - spec/system/**
     - spec/system/admins/**
+
+RSpec/MultipleMemoizedHelpers:
+  Exclude: 
+    - spec/models/**

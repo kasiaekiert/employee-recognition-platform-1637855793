@@ -15,6 +15,7 @@ RSpec.describe 'Rewards' do
     click_link 'Rewards'
 
     expect(page).to have_content 'Rewards'
+    expect(page).to have_css('div.pagination')
 
     visit('/')
     click_link 'Rewards'
