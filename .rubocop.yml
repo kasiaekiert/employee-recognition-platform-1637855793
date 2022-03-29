@@ -24,6 +24,10 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
 
+Lint/UselessAssignment:
+  Exclude: 
+  - app/controllers/*
+
 Style/Documentation:
   Enabled: false
 
