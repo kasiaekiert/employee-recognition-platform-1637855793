@@ -30,18 +30,19 @@ Kudo.where(title:"Kudo first").first_or_create! do |kudo|
   kudo.company_value = company_value
 end
 
-Reward.where(title:"Reward first").first_or_create! do |reward|
-  reward.description = 'Description'
-  reward.price = 15
+1.upto(10) do |i|
+  Reward.where(title: "title#{i}").first_or_create! do |reward|
+    reward.description = 'Description of this reward'
+    reward.price = 5
+  end
 end
 
-Reward.where(title:"Reward second").first_or_create! do |reward|
-  reward.description = 'Full description text'
-  reward.price = 10
+11.upto(25) do |i|
+  Reward.where(title: "title#{i}").first_or_create! do |reward|
+    reward.description = 'Description of this reward'
+    reward.price = 2
+  end
 end
 
-Reward.where(title:"Cheapest one reward").first_or_create! do |reward|
-  reward.description = 'For beginners'
-  reward.price = 2
-end
+
 
