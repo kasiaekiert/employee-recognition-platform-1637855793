@@ -3,7 +3,7 @@
 module Admins
   class RewardsController < Admins::BaseController
     def index
-      render :index, locals: { rewards: Reward.all }
+      render :index, locals: { rewards: Reward.includes(:categories).all }
     end
 
     def show
@@ -20,7 +20,6 @@ module Admins
 
     def create
       new_reward = Reward.new(reward_params)
-
       if new_reward.save
         redirect_to admins_rewards_path, notice: 'New Reward was successfully created.'
       else
@@ -32,7 +31,7 @@ module Admins
       if reward.update(reward_params)
         redirect_to admins_reward_path(reward), notice: 'Reward was successfully updated.'
       else
-        render :edit, locals: { reward: reward }
+        render :edit, locals: { reward: reward  }
       end
     end
 
@@ -48,7 +47,7 @@ module Admins
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price)
+      params.require(:reward).permit(:title, :description, :price, category_ids: [])
     end
   end
 end

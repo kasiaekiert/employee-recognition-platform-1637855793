@@ -30,6 +30,9 @@ Kudo.where(title:"Kudo first").first_or_create! do |kudo|
   kudo.company_value = company_value
 end
 
+category = Category.where(title:"Voucher").first_or_create!
+category1 = Category.where(title:"Event").first_or_create!
+
 1.upto(10) do |i|
   Reward.where(title: "title#{i}").first_or_create! do |reward|
     reward.description = 'Description of this reward'
@@ -42,7 +45,11 @@ end
     reward.description = 'Description of this reward'
     reward.price = 2
   end
+
+Reward.first.category_rewards.create(
+    category: category
+)
+Reward.last.category_rewards.create(
+  category: category1
+)
 end
-
-
-

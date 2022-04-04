@@ -1,7 +1,9 @@
 Reward:
 <p> Title: <%= reward.title %> </p>
-<p> Title: <%= reward.description %> </p>
-<p> Title: <%= reward.price %> </p>
+<p> Description: <%= reward.description %> </p>
+<p> Price: <%= reward.price %> </p>
+<p> Type: <%= reward.categories.name %> </p>
+
 
 
 <%= link_to 'Edit', edit_admins_reward_path(reward) %> |

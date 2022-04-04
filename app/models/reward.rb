@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Reward < ApplicationRecord
+  has_many :category_rewards, dependent: :destroy
+  has_many :categories, through: :category_rewards, dependent: :destroy
+
   validates :price, numericality: { greater_than_or_equal_to: 1 }
 
   scope :paginate, lambda { |page:, per_page: 10|
