@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+
+<% categories.each do |category| %>
+  <%= link_to category.title , admins_category_path(category) %>
+  <%= link_to "Edit this Category", edit_admins_category_path(category) %>
+  <%= link_to 'Destroy this Category', admins_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <br>
+<% end %>
+
+<%= link_to "New Category", new_admins_category_path %>

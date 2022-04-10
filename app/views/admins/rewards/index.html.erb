@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Description</th>
       <th>Price</th>
+      <th>Reward Category</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td class="table-primary"><%= link_to reward.title , admins_reward_path(reward) %></td>
         <td class="table-primary"><%= reward.description %></td>
         <td class="table-primary"><%= reward.price %></td>
+        <td class="table-primary"><%= reward.categories.map(&:title).join(", ") %></td>
         <td class="table-primary"><%= link_to "Edit this Reward", edit_admins_reward_path(reward) %>
         <%= link_to 'Destroy this reward', admins_reward_path(reward), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

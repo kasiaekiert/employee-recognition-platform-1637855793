@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :kudos
     resources :company_values
     resources :rewards
+    resources :categories
     resources :employees do
       get 'kudos_for_all', on: :collection
       patch 'update_kudos_for_all', on: :collection
