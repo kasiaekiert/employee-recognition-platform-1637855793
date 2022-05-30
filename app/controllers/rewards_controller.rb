@@ -2,7 +2,12 @@
 
 class RewardsController < ApplicationController
   def index
-    render :index, locals: { rewards: Reward.all.paginate(page: params[:page], per_page: 10) }
+    rewards = Reward.all
+    if params[:category_id].present?
+      rewards = rewards.joins(:category_rewards).where(category_rewards: { category_id: params[:category_id] })
+    end
+    rewards = rewards.paginate(page: params[:page], per_page: 10)
+    render :index, locals: { rewards: rewards }
   end
 
   def show

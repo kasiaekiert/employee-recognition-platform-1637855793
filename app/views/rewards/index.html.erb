@@ -2,10 +2,18 @@
 
 <table class="table table-success table-striped">
   <thead>
+      <div class="btn-group btns">
+      <% Category.all.each do |category| %>
+        <%= link_to category.title, rewards_path(category_id: category.id), class: 'btn btn-info' %>
+      <% end %>
+      <%= link_to "All", rewards_path, class: 'btn btn-info' %>
+    </div>
+
     <tr>
       <th>Title</th>
       <th>Description</th>
       <th>Price</th>
+      <th>Category</th>
       <th> </th>
     </tr>
   </thead>
@@ -16,6 +24,7 @@
         <td class="table-primary"><%= link_to reward.title, reward_path(reward) %></td>
         <td class="table-primary"><%= reward.description %></td>
         <td class="table-primary"><%= reward.price %></td>
+        <td class="table-primary"><%= reward.categories.map(&:title).join(", ") %></td>
         <td class="table-primary">
           <%= button_to "Order this reward", orders_path, params: { order: { reward_id: reward.id } }, method: :post, disabled: !reward.reward_purchasable?(current_employee) %>
         </td>

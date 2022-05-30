@@ -53,3 +53,4 @@ RSpec/AnyInstance:
 RSpec/MultipleMemoizedHelpers:
   Exclude: 
     - spec/models/**
+    - spec/system/**
