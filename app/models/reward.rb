@@ -3,6 +3,7 @@
 class Reward < ApplicationRecord
   has_many :category_rewards, dependent: :destroy
   has_many :categories, through: :category_rewards, dependent: :destroy
+  has_one_attached :image
 
   validates :price, numericality: { greater_than_or_equal_to: 1 }
 
