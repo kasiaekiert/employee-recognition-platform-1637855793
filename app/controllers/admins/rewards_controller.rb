@@ -20,6 +20,7 @@ module Admins
 
     def create
       new_reward = Reward.new(reward_params)
+
       if new_reward.save
         redirect_to admins_rewards_path, notice: 'New Reward was successfully created.'
       else
@@ -47,7 +48,7 @@ module Admins
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :description, :price, category_ids: [])
+      params.require(:reward).permit(:title, :description, :price, :image, category_ids: [])
     end
   end
 end

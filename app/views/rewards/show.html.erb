@@ -2,5 +2,10 @@ Reward:
 <p> Title: <%= reward.title %> </p>
 <p> Title: <%= reward.description %> </p>
 <p> Title: <%= reward.price %> </p>
+<p> Image: 
+  <% if reward.image.attached? %> 
+    <%= image_tag reward.image %>
+  <% end %></p>
+
 
 <%= link_to 'Back', rewards_path %>
