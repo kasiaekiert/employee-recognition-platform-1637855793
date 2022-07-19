@@ -4,7 +4,7 @@ Reward:
 <p> Title: <%= reward.price %> </p>
 <p> Image: 
   <% if reward.image.attached? %> 
-    <%= image_tag reward.image %>
+    <%= image_tag reward.image, style: 'height:25%; width:25%' %>
   <% end %></p>
 
 
