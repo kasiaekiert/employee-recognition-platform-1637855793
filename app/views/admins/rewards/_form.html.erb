@@ -31,6 +31,11 @@
     <%= form.collection_check_boxes :category_ids, Category.all, :id, :title %>
   </div>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, direct_upload: true, accept: 'image/jpg, image/png, image/jpeg' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

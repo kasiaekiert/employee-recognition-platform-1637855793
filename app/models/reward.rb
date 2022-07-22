@@ -3,8 +3,10 @@
 class Reward < ApplicationRecord
   has_many :category_rewards, dependent: :destroy
   has_many :categories, through: :category_rewards, dependent: :destroy
+  has_one_attached :image
 
   validates :price, numericality: { greater_than_or_equal_to: 1 }
+  validate :correct_image_type
 
   scope :paginate, lambda { |page:, per_page: 10|
     page = (page || 1).to_i
@@ -28,5 +30,13 @@ class Reward < ApplicationRecord
 
   def attributes
     { 'title' => nil, 'description' => nil, 'price' => nil }
+  end
+
+  private
+
+  def correct_image_type
+    return unless image.attached? && !image.content_type.in?(%w[image/jpg image/jpeg image/png])
+
+    errors.add(:image, 'Must be a jpg or a png file')
   end
 end

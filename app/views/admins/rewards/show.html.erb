@@ -3,8 +3,10 @@ Reward:
 <p> Description: <%= reward.description %> </p>
 <p> Price: <%= reward.price %> </p>
 <p> Type: <%= reward.categories.name %> </p>
-
-
+<p> Image: 
+  <% if reward.image.attached? %> 
+    <%= image_tag reward.image, style: 'height:25%; width:25%' %>
+  <% end %></p>
 
 <%= link_to 'Edit', edit_admins_reward_path(reward) %> |
 <%= link_to 'Back', admins_rewards_path %>
