@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
     resources :orders, only: %i[index]
     resource :orders do
+      get 'export'
       patch 'change_status'
     end
     root to: 'pages#home'
