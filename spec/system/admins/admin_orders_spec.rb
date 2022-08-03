@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'csv'
 
 RSpec.describe 'Orders' do
   let!(:employee) { create(:employee) }
@@ -48,5 +49,13 @@ RSpec.describe 'Orders' do
     click_button('Deliver', match: :first)
     # admin may deliver the order
     expect(page).to have_content 'Order delivered'
+
+    visit('/')
+    click_link 'Admin Panel'
+    click_link 'Orders'
+    click_link 'Export Orders'
+    # admin may export csv file with orders
+    expect(body).to include('Employee', 'Title', 'Description', 'Date', 'Status')
+    expect(body).to include(employee.email, reward.title, reward.description)
   end
 end
